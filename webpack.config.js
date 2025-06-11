@@ -41,4 +41,12 @@ module.exports = {
 			},
 		],
 	},
+
+	resolve: {
+		alias: {
+			"@js": path.resolve(__dirname, "src/js/"),
+			"@styles": path.resolve(__dirname, "src/styles/"),
+		},
+		extensions: [".js", ".css"],
+	},
 }

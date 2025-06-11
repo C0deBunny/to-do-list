@@ -1,4 +1,4 @@
-import { projectList } from "./projectController"
+import { projectList } from "@js/projectController"
 
 export const displayProject = () => {
 	const EMPTY = ""
