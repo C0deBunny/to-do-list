@@ -27,6 +27,10 @@ body {
 	color: var(--color-text);
 }
 
+button {
+	cursor: pointer;
+}
+
 aside {
 	grid-column: 1 / 2;
 	grid-row: 1 / 3;
@@ -44,9 +48,10 @@ aside header img {
 }
 
 aside nav {
+	width: 100%;
 	align-self: flex-start;
-	margin-left: 50px;
-	margin-top: 10px;
+	padding-top: 10px;
+	user-select: none;
 }
 
 aside ul {
@@ -56,7 +61,38 @@ aside ul {
 }
 
 aside li {
-	margin-top: 5px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 5px;
+	padding-left: 40px;
+	padding-right: 20px;
+	cursor: pointer;
+}
+
+aside li:hover {
+	background-color: var(--color-primary);
+	filter: brightness(150%);
+}
+
+aside h3 {
+	font-size: 1.2rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+aside li span {
+	font-size: 2rem;
+	color: var(--color-tertiary);
+	user-select: none;
+	cursor: pointer;
+	transition: transform 0.1s ease;
+}
+
+aside li span:hover {
+	transform: scale(1.5);
 }
 
 main {

@@ -5,8 +5,11 @@ export const createProjectList = () => {
 		add(project) {
 			projects.push(project)
 		},
-		remove(index) {
-			projects.splice(index, 1)
+		remove(id) {
+			const index = projects.findIndex((project) => project.id === id)
+			if (index !== -1) {
+				projects.splice(index, 1)
+			}
 		},
 		getAll() {
 			return [...projects]
