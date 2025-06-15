@@ -34,10 +34,21 @@
 
 		<div id="project-modal" class="modal hidden">
 			<div class="modal-content">
-				<span id="project-modal-close">&times;</span>
+				<span id="project-modal-close" class="close-modal">&times;</span>
 				<h2>New Project</h2>
 				<input type="text" id="project-name-input" placeholder="Project name" />
 				<button id="create-project-btn">Create</button>
+			</div>
+		</div>
+
+		<div id="project-delete-modal" class="modal hidden">
+			<div class="modal-content">
+				<span id="project-delete-modal-close" class="close-modal">&times;</span>
+				<h3 id="project-delete-name">Delete "Random Project Name Here" ?</h2>
+					<div class="divide">
+						<button id="delete-project-yes">Yes</button>
+						<button id="delete-project-no">No</button>
+					</div>
 			</div>
 		</div>
 	</body>

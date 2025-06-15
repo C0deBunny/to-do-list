@@ -1,5 +1,5 @@
 import { projectList } from "@js/projectController"
-import { deleteProject } from "@js/projectController"
+import { openDeleteModal } from "./projectModal"
 
 const EMPTY = ""
 
@@ -13,7 +13,7 @@ export const displayProject = () => {
 
 		const deleteBtn = document.createElement("span")
 		deleteBtn.textContent = "×"
-		deleteBtn.addEventListener("click", () => deleteProject(element))
+		deleteBtn.addEventListener("click", () => openDeleteModal(element))
 
 		projectNameDOM.appendChild(deleteBtn)
 		projectListContainer.appendChild(projectNameDOM)

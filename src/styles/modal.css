@@ -8,32 +8,52 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-.modal h2 {
-	margin-bottom: 0.5rem;
+	user-select: none;
 }
 
 .modal-content {
 	position: relative;
-	background: var(--color-primary);
-	color: var(--color-text);
-	padding: 2rem;
+	background-color: var(--color-primary);
+	padding: 40px;
 	border-radius: 5px;
 }
 
-#project-modal-close {
+.close-modal {
 	position: absolute;
 	right: 20px;
 	top: 5px;
 	font-size: 2rem;
-	user-select: none;
 	cursor: pointer;
-	transition: transform 0.1s ease;
+	transition: transform 0.1s ease, color 0.1s ease;
 
 	&:hover {
 		transform: scale(1.2);
+		color: var(--color-tertiary);
 	}
+}
+
+.modal h2 {
+	padding-bottom: 0.5rem;
+	font-size: 1.5rem;
+	font-weight: 250px;
+}
+
+.modal h3 {
+	padding-bottom: 0.5rem;
+	font-size: 1.2rem;
+	font-weight: 250px;
+	text-align: center;
+}
+
+.divide {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.divide button {
+	width: 100px;
 }
 
 .modal button,
@@ -43,14 +63,22 @@ input {
 	color: var(--color-text);
 	border-radius: 5px;
 	font-size: 1.2rem;
+	outline: none;
+	transition: transform 0.1s ease, color 0.1s ease;
 }
 
-.modal button {
-	transition: transform 0.1s ease;
+.modal input:hover {
+	border-color: var(--color-secondary);
+}
 
-	&:hover {
-		transform: scale(1.05);
-	}
+.modal input:focus {
+	border-color: var(--color-secondary);
+}
+
+.modal button:hover {
+	color: var(--color-secondary);
+	border-color: var(--color-secondary);
+	transform: scale(1.05);
 }
 
 .hidden {
