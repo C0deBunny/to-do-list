@@ -23,3 +23,9 @@ export function deleteProject(project) {
 	projectList.remove(project.id)
 	displayProject()
 }
+
+export function renameProject(project, newName, modal) {
+	projectList.rename(project.name, newName)
+	displayProject()
+	hideModal(modal)
+}

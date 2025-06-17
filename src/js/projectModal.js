@@ -1,5 +1,6 @@
 import { createNewProject } from "./projectController"
 import { deleteProject } from "./projectController"
+import { renameProject } from "./projectController"
 
 const EMPTY = ""
 
@@ -24,6 +25,7 @@ export function initNewProjectModal() {
 
 	openBtn.addEventListener("click", () => {
 		revealModal(modal)
+		modalInput.focus()
 		clearModal(modalInput)
 	})
 
@@ -44,6 +46,9 @@ export function initNewProjectModal() {
 	modalInput.addEventListener("keydown", (e) => {
 		if (e.key === "Enter") {
 			createNewProject(modalInput, modal)
+		} else if (e.key === "Escape") {
+			hideModal(modal)
+			clearModal(modal)
 		}
 	})
 }
@@ -71,6 +76,37 @@ export function openDeleteModal(project) {
 	window.addEventListener("click", (e) => {
 		if (e.target === modal) {
 			hideModal(modal)
+		}
+	})
+}
+
+export function openEditModal(project) {
+	const modal = document.getElementById("project-edit-modal")
+	const modalClose = document.getElementById("project-edit-modal-close")
+	const modalInput = document.getElementById("project-edit-name")
+	const checkIcon = document.getElementById("check-icon")
+
+	revealModal(modal)
+	modalInput.focus()
+
+	modalInput.value = project.name
+
+	modalClose.addEventListener("click", () => hideModal(modal))
+
+	window.addEventListener("click", (e) => {
+		if (e.target === modal) {
+			hideModal(modal)
+		}
+	})
+
+	checkIcon.addEventListener("click", () => renameProject(project, modalInput.value, modal))
+
+	modalInput.addEventListener("keydown", (e) => {
+		if (e.key === "Enter") {
+			renameProject(project, modalInput.value, modal)
+		} else if (e.key === "Escape") {
+			hideModal(modal)
+			clearModal(modal)
 		}
 	})
 }

@@ -87,12 +87,46 @@ aside h3 {
 	text-overflow: ellipsis;
 }
 
-aside li span {
+.icon-container {
+	display: flex;
+	gap: 10px;
+	position: relative;
+}
+
+.delete-icon {
 	font-size: 2rem;
-	color: var(--color-tertiary);
 	user-select: none;
 	cursor: pointer;
 	transition: transform 0.1s ease;
+
+	&:hover {
+		color: var(--color-tertiary);
+	}
+}
+
+.edit-icon {
+	font-size: 1.5rem;
+	user-select: none;
+	cursor: pointer;
+	transition: transform 0.1s ease;
+	position: absolute;
+	right: 25px;
+	top: 5px;
+
+	&:hover {
+		color: var(--color-secondary);
+	}
+}
+
+#check-icon {
+	padding-left: 5px;
+	font-size: 1.5rem;
+	user-select: none;
+	cursor: pointer;
+
+	&:hover {
+		color: var(--color-secondary);
+	}
 }
 
 aside li span:hover {

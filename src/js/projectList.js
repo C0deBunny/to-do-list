@@ -11,6 +11,9 @@ export const createProjectList = () => {
 				projects.splice(index, 1)
 			}
 		},
+		rename(oldName, newName) {
+			projects.find((project) => project.name === oldName).name = newName
+		},
 		getAll() {
 			return [...projects]
 		},
