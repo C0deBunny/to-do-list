@@ -129,6 +129,11 @@ aside h3 {
 	}
 }
 
+.highlight {
+	background-color: var(--color-primary);
+	filter: brightness(125%);
+}
+
 aside li span:hover {
 	transform: scale(1.5);
 }
@@ -138,13 +143,13 @@ main {
 	grid-row: 1 / 2;
 }
 
-.list-container {
+#todo-container {
 	height: 100%;
 	width: 100%;
-	padding: 50px;
+	padding: 40px;
 }
 
-.section {
+.todo {
 	padding: 10px;
 	border: 2px solid var(--color-text);
 	border-radius: 10px;
