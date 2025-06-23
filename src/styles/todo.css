@@ -1,0 +1,22 @@
+.newTodoBtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2px;
+	border: 2px solid var(--color-text);
+	border-radius: 10px;
+	background: var(--color-primary);
+	user-select: none;
+	transition: padding 0.2s ease;
+}
+
+.newTodoBtn:hover {
+	padding: 6px;
+	filter: brightness(150%);
+	cursor: pointer;
+}
+
+.newTodoBtn svg {
+	height: 3rem;
+	fill: var(--color-text);
+}

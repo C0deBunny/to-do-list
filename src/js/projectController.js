@@ -4,6 +4,7 @@ import { displayProject } from "@js/ProjectDOM"
 import { initNewProjectModal } from "./projectModal"
 import { hideModal } from "./projectModal"
 import { displayTodo } from "./TodoDOM"
+import { createTodo } from "./todoFactory"
 
 export const projectList = createProjectList()
 export let selectedProject = null
@@ -18,6 +19,7 @@ export function createNewProject(modalInput, modal) {
 
 	const newProject = createProject(projectName)
 	projectList.add(newProject)
+
 	displayProject()
 	hideModal(modal)
 }
@@ -34,17 +36,36 @@ export function renameProject(project, newName, modal) {
 }
 
 export function selectProject(projectId) {
-	selectedProject = projectId
+	selectedProject = projectList.getProjectById(projectId)
+
 	highlightSelectedProject()
 	displayTodo()
 }
 
 export function highlightSelectedProject() {
 	document.querySelectorAll(".project").forEach((e) => {
-		if (e.dataset.id == selectedProject) {
+		if (selectedProject === null) return
+
+		if (e.dataset.id == selectedProject.id) {
 			e.classList.add("highlight")
 		} else {
 			e.classList.remove("highlight")
 		}
 	})
 }
+
+// Testing
+const testProject = createProject("test")
+projectList.add(testProject)
+displayProject()
+
+const testTodo = createTodo("my new todo", "a good description", null, "high")
+testProject.todoList.add(testTodo)
+
+const testTodo2 = createTodo("my new todo 2", "a good description", null, "high")
+testProject.todoList.add(testTodo2)
+
+const testTodo3 = createTodo("Kiss Apple Toast", "a good description", null, "high")
+testProject.todoList.add(testTodo3)
+
+console.log(testProject.todoList.getAll())
