@@ -1,5 +1,6 @@
 import { selectedProject } from "./projectController"
 import { createTodo } from "./todoFactory"
+import { newTodoModal } from "./todoModal"
 
 const EMPTY = ""
 
@@ -33,6 +34,7 @@ export function displayTodo() {
 
 	newTodoBtn.addEventListener("click", () => {
 		// Open modal
+		newTodoModal()
 
 		//test
 		const todo = createTodo("title", "description", null, "high")

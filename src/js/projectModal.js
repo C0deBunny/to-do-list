@@ -106,7 +106,6 @@ export function openEditModal(project) {
 			renameProject(project, modalInput.value, modal)
 		} else if (e.key === "Escape") {
 			hideModal(modal)
-			clearModal(modal)
 		}
 	})
 }

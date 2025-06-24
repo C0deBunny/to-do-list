@@ -64,5 +64,24 @@
 				<span id="check-icon">✓</span>
 			</div>
 		</div>
+
+		<div id="todo-modal" class="modal hidden">
+			<div class="modal-content todo-modal">
+				<span id="todo-modal-close" class="close-modal">&times;</span>
+				<h2>New Todo</h2>
+				<label for="title">Title: </label>
+				<input type="text" id="title-todo" name="title" placeholder="My new todo" />
+				<label for="description">Description: </label>
+				<textarea name="description" rows="5" id="description-todo" placeholder="Add additional information about your task."></textarea>
+				<label for="date">Due Date:</label>
+				<input type="date" name="date" />
+				<label for="priority">Priority: </label>
+				<select name="priority" id="priority-todo">
+					<option value="low" selected>Low</option>
+					<option value="medium">Medium</option>
+					<option value="high">High</option>
+				</select>
+			</div>
+		</div>
 	</body>
 </html>
