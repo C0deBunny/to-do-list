@@ -1,4 +1,5 @@
 import { selectedProject } from "./projectController"
+import { createTodo } from "./todoFactory"
 
 const EMPTY = ""
 
@@ -9,7 +10,6 @@ export function displayTodo() {
 	if (selectedProject === null) return
 
 	// for each todo in selected project () =>
-	console.log(selectedProject.todoList.getAll())
 	selectedProject.todoList.getAll().forEach((e) => {
 		const todo = document.createElement("div")
 		todo.classList.add("todo")
@@ -30,6 +30,16 @@ export function displayTodo() {
 		</svg>
 	`
 	newTodoBtn.classList.add("newTodoBtn")
+
+	newTodoBtn.addEventListener("click", () => {
+		// Open modal
+
+		//test
+		const todo = createTodo("title", "description", null, "high")
+
+		selectedProject.todoList.add(todo)
+		displayTodo()
+	})
 
 	todoContainer.appendChild(newTodoBtn)
 }

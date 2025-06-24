@@ -67,5 +67,3 @@ testProject.todoList.add(testTodo2)
 
 const testTodo3 = createTodo("Kiss Apple Toast", "a good description", null, "high")
 testProject.todoList.add(testTodo3)
-
-console.log(testProject.todoList.getAll())
