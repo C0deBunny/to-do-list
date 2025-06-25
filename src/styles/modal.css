@@ -18,6 +18,17 @@
 	border-radius: 5px;
 }
 
+#check-icon {
+	padding-left: 5px;
+	font-size: 1.5rem;
+	user-select: none;
+	cursor: pointer;
+
+	&:hover {
+		color: var(--color-secondary);
+	}
+}
+
 #todo-form {
 	display: flex;
 	flex-direction: column;
