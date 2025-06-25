@@ -66,7 +66,7 @@
 		</div>
 
 		<div id="todo-modal" class="modal hidden">
-			<div class="modal-content todo-modal">
+			<form class="modal-content" id="todo-form">
 				<span id="todo-modal-close" class="close-modal">&times;</span>
 				<h2>New Todo</h2>
 				<label for="title">Title: </label>
@@ -74,14 +74,15 @@
 				<label for="description">Description: </label>
 				<textarea name="description" rows="5" id="description-todo" placeholder="Add additional information about your task."></textarea>
 				<label for="date">Due Date:</label>
-				<input type="date" name="date" />
+				<input type="date" name="date" id="date-todo" />
 				<label for="priority">Priority: </label>
 				<select name="priority" id="priority-todo">
 					<option value="low" selected>Low</option>
 					<option value="medium">Medium</option>
 					<option value="high">High</option>
 				</select>
-			</div>
+				<button type="button" id="create-todo-btn">Create</button>
+			</form>
 		</div>
 	</body>
 </html>

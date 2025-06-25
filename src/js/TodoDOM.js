@@ -18,7 +18,11 @@ export function displayTodo() {
 		const title = document.createElement("h2")
 		title.textContent = e.title
 
+		const description = document.createElement("h3")
+		description.textContent = e.description
+
 		todo.appendChild(title)
+		todo.appendChild(description)
 		todoContainer.appendChild(todo)
 	})
 
@@ -33,14 +37,7 @@ export function displayTodo() {
 	newTodoBtn.classList.add("newTodoBtn")
 
 	newTodoBtn.addEventListener("click", () => {
-		// Open modal
 		newTodoModal()
-
-		//test
-		const todo = createTodo("title", "description", null, "high")
-
-		selectedProject.todoList.add(todo)
-		displayTodo()
 	})
 
 	todoContainer.appendChild(newTodoBtn)

@@ -3,6 +3,7 @@ import { createProjectList } from "@js/projectList"
 import { displayProject } from "@js/ProjectDOM"
 import { initNewProjectModal } from "./projectModal"
 import { hideModal } from "./projectModal"
+import { hideTodoModal } from "./todoModal"
 import { displayTodo } from "./TodoDOM"
 import { createTodo } from "./todoFactory"
 
@@ -54,16 +55,30 @@ export function highlightSelectedProject() {
 	})
 }
 
+export function createNewTodo(title, description, date, priority, modal) {
+	const titleTodo = title.value.trim()
+	if (!titleTodo) return alert("Please fill in a title!")
+
+	let descriptionTodo = description.value.trim()
+	if (descriptionTodo === "") descriptionTodo = null
+
+	let dateTodo = date.value
+	if (dateTodo === "") dateTodo = null
+
+	const priorityTodo = priority.value
+
+	console.log(titleTodo, descriptionTodo, dateTodo, priorityTodo)
+
+	const todo = createTodo(titleTodo, descriptionTodo, dateTodo, priorityTodo)
+	selectedProject.todoList.add(todo)
+	displayTodo()
+	hideTodoModal(modal)
+}
+
 // Testing
-const testProject = createProject("test")
+const testProject = createProject("Test Project")
 projectList.add(testProject)
 displayProject()
 
-const testTodo = createTodo("my new todo", "a good description", null, "high")
+const testTodo = createTodo("This is a Test Todo", "with a good description", null, "high")
 testProject.todoList.add(testTodo)
-
-const testTodo2 = createTodo("my new todo 2", "a good description", null, "high")
-testProject.todoList.add(testTodo2)
-
-const testTodo3 = createTodo("Kiss Apple Toast", "a good description", null, "high")
-testProject.todoList.add(testTodo3)
