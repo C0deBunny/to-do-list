@@ -1,7 +1,7 @@
 @import "@styles/reset";
 @import "@styles/modal";
 @import "@styles/todos";
-@import "@styles/projects";
+@import "@styles/side-bar";
 
 :root {
 	/* https://coolors.co/1a1a1a-f0f0f0-016fb9-aa5042 */
@@ -35,81 +35,6 @@ button {
 
 ::selection {
 	background-color: var(--color-secondary);
-}
-
-aside {
-	grid-column: 1 / 2;
-	grid-row: 1 / 3;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: var(--color-primary);
-	filter: brightness(90%);
-}
-
-.projects-header {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.projects-header svg {
-	position: absolute;
-	right: 20px;
-	height: 30px;
-	fill: var(--color-text);
-}
-
-aside nav {
-	width: 100%;
-	align-self: flex-start;
-	padding-top: 10px;
-	user-select: none;
-}
-
-aside ul {
-	list-style-type: none;
-	padding-left: 0;
-	text-align: center;
-}
-
-aside li {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	gap: 5px;
-	padding-left: 40px;
-	padding-right: 20px;
-	cursor: pointer;
-}
-
-aside li:hover {
-	background-color: var(--color-primary);
-	filter: brightness(150%);
-}
-
-aside h3 {
-	font-size: 1.2rem;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.icon-container {
-	display: flex;
-	gap: 10px;
-	position: relative;
-}
-
-.highlight {
-	background-color: var(--color-primary);
-	filter: brightness(125%);
-}
-
-aside li span:hover {
-	transform: scale(1.5);
 }
 
 main {

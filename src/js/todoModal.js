@@ -17,12 +17,18 @@ export function newTodoModal() {
 	const description = document.getElementById("description-todo")
 	const date = document.getElementById("date-todo")
 	const priority = document.getElementById("priority-todo")
-	const createBtn = document.getElementById("create-todo-btn")
 	const closeBtn = document.getElementById("todo-modal-close")
 
 	revealModal(modal)
 
-	createBtn.addEventListener("click", () => {
+	form.addEventListener("submit", (e) => {
+		e.preventDefault()
+		e.stopPropagation()
+
+		if (!form.checkValidity()) {
+			form.reportValidity() // Optional: triggers the browser UI for validation
+			return
+		}
 		createNewTodo(title, description, date, priority, modal)
 	})
 

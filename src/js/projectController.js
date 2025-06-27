@@ -1,7 +1,6 @@
 import { createProject } from "@js/projectFactory"
 import { createProjectList } from "@js/projectList"
 import { displayProject } from "@js/ProjectDOM"
-import { initNewProjectModal } from "./projectModal"
 import { hideModal } from "./projectModal"
 import { hideTodoModal } from "./todoModal"
 import { displayTodo } from "./TodoDOM"
@@ -12,7 +11,6 @@ export let selectedProject = null
 
 displayProject()
 displayTodo()
-initNewProjectModal()
 
 export function createNewProject(modalInput, modal) {
 	const projectName = modalInput.value.trim()
@@ -57,7 +55,6 @@ export function highlightSelectedProject() {
 
 export function createNewTodo(title, description, date, priority, modal) {
 	const titleTodo = title.value.trim()
-	if (!titleTodo) return alert("Please fill in a title!")
 
 	let descriptionTodo = description.value.trim()
 	if (descriptionTodo === "") descriptionTodo = null

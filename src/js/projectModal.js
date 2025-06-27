@@ -17,7 +17,7 @@ function clearModal(modalInput) {
 	modalInput.value = EMPTY
 }
 
-export function initNewProjectModal() {
+export function newProjectModal() {
 	const modal = document.getElementById("project-modal")
 	const modalInput = document.getElementById("project-name-input")
 	const openBtn = document.getElementById("new-project")
@@ -85,7 +85,7 @@ export function openEditModal(project) {
 	const modal = document.getElementById("project-edit-modal")
 	const modalClose = document.getElementById("project-edit-modal-close")
 	const modalInput = document.getElementById("project-edit-name")
-	const checkIcon = document.getElementById("check-icon")
+	const updateBtn = document.getElementById("update-project-btn")
 
 	revealModal(modal)
 	modalInput.focus()
@@ -100,7 +100,7 @@ export function openEditModal(project) {
 		}
 	})
 
-	checkIcon.addEventListener("click", () => renameProject(project, modalInput.value, modal))
+	updateBtn.addEventListener("click", () => renameProject(project, modalInput.value, modal))
 
 	modalInput.addEventListener("keydown", (e) => {
 		if (e.key === "Enter") {

@@ -1,5 +1,4 @@
 import { selectedProject } from "./projectController"
-import { createTodo } from "./todoFactory"
 import { newTodoModal } from "./todoModal"
 
 const EMPTY = ""

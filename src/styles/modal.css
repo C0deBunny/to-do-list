@@ -15,25 +15,7 @@
 	position: relative;
 	background-color: var(--color-primary);
 	padding: 40px;
-	border-radius: 5px;
-}
-
-#check-icon {
-	padding-left: 5px;
-	font-size: 1.5rem;
-	user-select: none;
-	cursor: pointer;
-
-	&:hover {
-		color: var(--color-secondary);
-	}
-}
-
-#todo-form {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-	width: 500px;
+	border-radius: 10px;
 }
 
 .close-modal {
@@ -43,11 +25,11 @@
 	font-size: 2rem;
 	cursor: pointer;
 	transition: transform 0.1s ease, color 0.1s ease;
+}
 
-	&:hover {
-		transform: scale(1.2);
-		color: var(--color-tertiary);
-	}
+.close-modal:hover {
+	transform: scale(1.2);
+	color: var(--color-tertiary);
 }
 
 .modal h2 {
@@ -63,19 +45,21 @@
 	text-align: center;
 }
 
-.divide {
+.button-split {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 20px;
 }
 
-.divide button {
-	width: 100px;
+.button-split button {
+	flex-grow: 1;
 }
 
 .modal button,
-input {
+.modal input,
+.modal textarea,
+.modal select {
 	background: none;
 	border: 1px solid var(--color-text);
 	color: var(--color-text);
@@ -83,6 +67,10 @@ input {
 	font-size: 1.2rem;
 	outline: none;
 	transition: transform 0.1s ease, color 0.1s ease;
+}
+
+.modal option {
+	background-color: var(--color-primary);
 }
 
 .modal input:hover {
@@ -99,12 +87,27 @@ input {
 	transform: scale(1.05);
 }
 
-.modal input[type="date"] {
+#todo-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 500px;
+}
+
+#todo-form input[type="date"] {
 	align-self: flex-start;
 }
 
-.modal select {
+#todo-form select {
 	align-self: flex-start;
+}
+
+#todo-form label {
+	margin-bottom: -10px;
+}
+
+#todo-form button {
+	margin-top: 20px;
 }
 
 .hidden {
