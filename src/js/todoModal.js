@@ -1,16 +1,13 @@
 import { createNewTodo } from "./projectController"
+import { deleteTodo } from "./projectController"
 
-const EMPTY = ""
+let selectedTodo = null
 
-export function hideTodoModal(modal) {
+function hideModal(modal) {
 	modal.classList.add("hidden")
 }
 
-function revealModal(modal) {
-	modal.classList.remove("hidden")
-}
-
-export function newTodoModal() {
+function newTodoModal() {
 	const modal = document.getElementById("todo-modal")
 	const form = document.getElementById("todo-form")
 	const title = document.getElementById("title-todo")
@@ -18,8 +15,6 @@ export function newTodoModal() {
 	const date = document.getElementById("date-todo")
 	const priority = document.getElementById("priority-todo")
 	const closeBtn = document.getElementById("todo-modal-close")
-
-	revealModal(modal)
 
 	form.addEventListener("submit", (e) => {
 		e.preventDefault()
@@ -33,14 +28,51 @@ export function newTodoModal() {
 	})
 
 	closeBtn.addEventListener("click", () => {
-		hideTodoModal(modal)
+		hideModal(modal)
 		form.reset()
 	})
 
 	window.addEventListener("click", (e) => {
 		if (e.target === modal) {
-			hideTodoModal(modal)
+			hideModal(modal)
 			form.reset()
 		}
 	})
+}
+
+function DeleteModal() {
+	const modal = document.getElementById("todo-delete-modal")
+	const modalClose = document.getElementById("todo-delete-modal-close")
+	const yesBtn = document.getElementById("delete-todo-yes")
+	const noBtn = document.getElementById("delete-todo-no")
+
+	yesBtn.addEventListener("click", () => {
+		deleteTodo(selectedTodo)
+		hideModal(modal)
+	})
+
+	noBtn.addEventListener("click", () => hideModal(modal))
+
+	modalClose.addEventListener("click", () => hideModal(modal))
+
+	window.addEventListener("click", (e) => {
+		if (e.target === modal) {
+			hideModal(modal)
+		}
+	})
+}
+
+export function initTodoModals() {
+	newTodoModal()
+	DeleteModal()
+}
+
+export function revealDeleteModal(todo) {
+	const modal = document.getElementById("todo-delete-modal")
+	const header = document.getElementById("todo-delete-name")
+
+	modal.classList.remove("hidden")
+	header.textContent = `Delete ${todo.title} ?`
+
+	selectedTodo = todo
 }

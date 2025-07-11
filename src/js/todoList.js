@@ -5,8 +5,11 @@ export const createTodoList = () => {
 		add(todo) {
 			todos.push(todo)
 		},
-		remove(index) {
-			todos.splice(index, 1)
+		remove(id) {
+			const index = todos.findIndex((todo) => todo.id === id)
+			if (index !== -1) {
+				todos.splice(index, 1)
+			}
 		},
 		getAll() {
 			return [...todos]

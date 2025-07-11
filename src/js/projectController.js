@@ -2,16 +2,18 @@ import { createProject } from "@js/projectFactory"
 import { createProjectList } from "@js/projectList"
 import { displayProject } from "@js/ProjectDOM"
 import { hideModal } from "./projectModal"
-import { hideTodoModal } from "./todoModal"
 import { displayTodo } from "./TodoDOM"
 import { createTodo } from "./todoFactory"
+import { initTodoModals } from "./todoModal"
 
 export const projectList = createProjectList()
 export let selectedProject = null
 
 displayProject()
 displayTodo()
+initTodoModals()
 
+// Projects
 export function createNewProject(modalInput, modal) {
 	const projectName = modalInput.value.trim()
 	if (!projectName) return alert("Please fill in name!")
@@ -53,6 +55,7 @@ export function highlightSelectedProject() {
 	})
 }
 
+// To-Do
 export function createNewTodo(title, description, date, priority, modal) {
 	const titleTodo = title.value.trim()
 
@@ -64,15 +67,20 @@ export function createNewTodo(title, description, date, priority, modal) {
 
 	const priorityTodo = priority.value
 
-	console.log(titleTodo, descriptionTodo, dateTodo, priorityTodo)
-
 	const todo = createTodo(titleTodo, descriptionTodo, dateTodo, priorityTodo)
 	selectedProject.todoList.add(todo)
+
 	displayTodo()
-	hideTodoModal(modal)
+	document.getElementById("todo-modal").classList.add("hidden")
+	document.getElementById("todo-form").reset()
 }
 
-// Testing
+export function deleteTodo(todo) {
+	selectedProject.todoList.remove(todo.id)
+	displayTodo()
+}
+
+// EXAMPLE ITEMS
 const testProject = createProject("Test Project")
 projectList.add(testProject)
 displayProject()

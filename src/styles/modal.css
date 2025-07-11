@@ -73,11 +73,15 @@
 	background-color: var(--color-primary);
 }
 
-.modal input:hover {
+.modal input:hover,
+.modal textarea:hover,
+.modal select:hover {
 	border-color: var(--color-secondary);
 }
 
-.modal input:focus {
+.modal input:focus,
+.modal textarea:focus,
+.modal select:focus {
 	border-color: var(--color-secondary);
 }
 

@@ -1,5 +1,5 @@
 import { selectedProject } from "./projectController"
-import { newTodoModal } from "./todoModal"
+import { revealDeleteModal } from "./todoModal"
 
 const EMPTY = ""
 
@@ -20,6 +20,27 @@ export function displayTodo() {
 		const description = document.createElement("h3")
 		description.textContent = e.description
 
+		const icons = document.createElement("div")
+		icons.classList = "todo-icon-container"
+
+		const editBtn = document.createElement("span")
+		editBtn.textContent = "✎"
+		editBtn.classList = "edit-icon"
+		editBtn.addEventListener("click", (event) => {
+			event.stopPropagation()
+		})
+
+		const deleteBtn = document.createElement("span")
+		deleteBtn.textContent = "×"
+		deleteBtn.classList = "delete-icon"
+		deleteBtn.addEventListener("click", (event) => {
+			event.stopPropagation()
+			revealDeleteModal(e)
+		})
+
+		icons.appendChild(editBtn)
+		icons.appendChild(deleteBtn)
+		todo.appendChild(icons)
 		todo.appendChild(title)
 		todo.appendChild(description)
 		todoContainer.appendChild(todo)
@@ -36,7 +57,7 @@ export function displayTodo() {
 	newTodoBtn.classList.add("newTodoBtn")
 
 	newTodoBtn.addEventListener("click", () => {
-		newTodoModal()
+		document.getElementById("todo-modal").classList.remove("hidden")
 	})
 
 	todoContainer.appendChild(newTodoBtn)

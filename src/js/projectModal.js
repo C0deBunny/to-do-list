@@ -1,7 +1,6 @@
 import { createNewProject } from "./projectController"
 import { deleteProject } from "./projectController"
 import { renameProject } from "./projectController"
-import { createNewTodo } from "./projectController"
 
 const EMPTY = ""
 
@@ -17,7 +16,7 @@ function clearModal(modalInput) {
 	modalInput.value = EMPTY
 }
 
-export function newProjectModal() {
+function newProjectModal() {
 	const modal = document.getElementById("project-modal")
 	const modalInput = document.getElementById("project-name-input")
 	const openBtn = document.getElementById("new-project")
@@ -53,6 +52,7 @@ export function newProjectModal() {
 		}
 	})
 }
+newProjectModal()
 
 export function openDeleteModal(project) {
 	const modal = document.getElementById("project-delete-modal")
