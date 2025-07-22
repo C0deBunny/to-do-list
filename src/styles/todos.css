@@ -50,6 +50,11 @@
 	fill: var(--color-text);
 	height: 2rem;
 	width: 2rem;
+	transition: transform 0.3s ease;
+}
+
+.dropdown-open {
+	transform: rotate(90deg);
 }
 
 .todo-icon-container {

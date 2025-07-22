@@ -93,8 +93,10 @@ export function displayTodo() {
 function toggleDropdown(e) {
 	const todo = e.target.closest(".todo")
 	const description = todo.querySelector(".todo-description")
+	const dropdownIcon = todo.querySelector(".todoDropDown svg")
 
 	if (description) {
 		description.classList.toggle("hidden")
+		dropdownIcon.classList.toggle("dropdown-open")
 	}
 }
