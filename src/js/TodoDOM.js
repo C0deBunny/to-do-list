@@ -1,3 +1,4 @@
+import { format } from "date-fns"
 import { selectedProject } from "./projectController"
 import { revealDeleteModal } from "./todoModal"
 
@@ -10,7 +11,12 @@ export function displayTodo() {
 	if (selectedProject === null) return
 
 	// for each todo in selected project () =>
-	selectedProject.todoList.getAll().forEach((e) => {
+	const sortedTodoList = [...selectedProject.todoList.getAll()].sort((a, b) => {
+		if (!a.dueDate) return 1
+		if (!b.dueDate) return -1
+		return a.dueDate - b.dueDate
+	})
+	sortedTodoList.forEach((e) => {
 		const todoContent = document.createElement("div")
 		todoContent.classList.add("todo-content")
 
@@ -28,7 +34,18 @@ export function displayTodo() {
 		dropDown.addEventListener("click", toggleDropdown)
 
 		const title = document.createElement("h2")
+		title.classList.add("todo-title")
 		title.textContent = e.title
+
+		const dueDate = document.createElement("h5")
+		if (e.dueDate == null) {
+			dueDate.textContent = "N/A"
+		} else {
+			dueDate.textContent = format(e.dueDate, "dd MMM yyyy")
+		}
+
+		const header = document.createElement("div")
+		header.classList.add("todo-header")
 
 		const icons = document.createElement("div")
 		icons.classList = "todo-icon-container"
@@ -65,9 +82,11 @@ export function displayTodo() {
 
 		icons.appendChild(editBtn)
 		icons.appendChild(deleteBtn)
+		header.appendChild(dueDate)
+		header.appendChild(title)
 		todoContent.appendChild(dropDown)
+		todoContent.appendChild(header)
 		todoContent.appendChild(icons)
-		todoContent.appendChild(title)
 		todoContent.appendChild(description)
 		todo.appendChild(todoContent)
 		todoContainer.appendChild(todo)

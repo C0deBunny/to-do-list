@@ -74,3 +74,15 @@
 .priority-high {
 	border-left: 20px solid red;
 }
+
+.todo-header {
+	display: grid;
+	grid-template-columns: 5rem 1fr;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.todo-title {
+	padding-left: 1rem;
+	border-left: solid 2px var(--color-text);
+}

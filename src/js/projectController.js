@@ -5,6 +5,7 @@ import { hideModal } from "./projectModal"
 import { displayTodo } from "./TodoDOM"
 import { createTodo } from "./todoFactory"
 import { initTodoModals } from "./todoModal"
+import { parse } from "date-fns"
 
 export const projectList = createProjectList()
 export let selectedProject = null
@@ -63,7 +64,11 @@ export function createNewTodo(title, description, date, priority, modal) {
 	if (descriptionTodo === "") descriptionTodo = null
 
 	let dateTodo = date.value
-	if (dateTodo === "") dateTodo = null
+	if (dateTodo === "") {
+		dateTodo = null
+	} else {
+		dateTodo = parse(dateTodo, "yyyy-MM-dd", new Date())
+	}
 
 	const priorityTodo = priority.value
 
