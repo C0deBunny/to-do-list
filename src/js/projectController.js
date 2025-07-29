@@ -6,6 +6,13 @@ import { displayTodo } from "./TodoDOM"
 import { createTodo } from "./todoFactory"
 import { initTodoModals } from "./todoModal"
 import { parse } from "date-fns"
+import { loadProjects, saveProjects } from "./storage"
+
+// let allProjects = loadProjects()
+// if (allProjects.length === 0) {
+// 	allProjects = [projectFactory("inbox")]
+// 	saveProjects(allProjects)
+// }
 
 export const projectList = createProjectList()
 export let selectedProject = null

@@ -1,4 +1,4 @@
-import { format } from "date-fns"
+import { format, isPast, isToday } from "date-fns"
 import { selectedProject } from "./projectController"
 import { revealDeleteModal } from "./todoModal"
 
@@ -42,6 +42,11 @@ export function displayTodo() {
 			dueDate.textContent = "N/A"
 		} else {
 			dueDate.textContent = format(e.dueDate, "dd MMM yyyy")
+			if (isPast(e.dueDate) && !isToday(e.dueDate)) {
+				dueDate.classList.add("overdue")
+			} else if (isToday(e.dueDate)) {
+				dueDate.classList.add("dueToday")
+			}
 		}
 
 		const header = document.createElement("div")

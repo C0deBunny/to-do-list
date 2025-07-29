@@ -86,3 +86,12 @@
 	padding-left: 1rem;
 	border-left: solid 2px var(--color-text);
 }
+
+.overdue {
+	color: red;
+	font-style: italic;
+}
+
+.dueToday {
+	color: cornflowerblue;
+}
