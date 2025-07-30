@@ -8,14 +8,20 @@ import { initTodoModals } from "./todoModal"
 import { parse } from "date-fns"
 import { loadProjects, saveProjects } from "./storage"
 
-// let allProjects = loadProjects()
-// if (allProjects.length === 0) {
-// 	allProjects = [projectFactory("inbox")]
-// 	saveProjects(allProjects)
-// }
-
 export const projectList = createProjectList()
 export let selectedProject = null
+
+const loaded = loadProjects()
+
+if (loaded.length === 0) {
+	const defaultProject = createProject("My new project")
+	projectList.add(defaultProject)
+	selectedProject = defaultProject
+	saveProjects(projectList.getAll())
+} else {
+	loaded.forEach((project) => projectList.add(project))
+	selectedProject = projectList.getAll()[0]
+}
 
 displayProject()
 displayTodo()
@@ -31,17 +37,20 @@ export function createNewProject(modalInput, modal) {
 
 	displayProject()
 	hideModal(modal)
+	saveProjects(projectList.getAll())
 }
 
 export function deleteProject(project) {
 	projectList.remove(project.id)
 	displayProject()
+	saveProjects(projectList.getAll())
 }
 
 export function renameProject(project, newName, modal) {
 	projectList.rename(project.name, newName)
 	displayProject()
 	hideModal(modal)
+	saveProjects(projectList.getAll())
 }
 
 export function selectProject(projectId) {
@@ -85,17 +94,11 @@ export function createNewTodo(title, description, date, priority, modal) {
 	displayTodo()
 	document.getElementById("todo-modal").classList.add("hidden")
 	document.getElementById("todo-form").reset()
+	saveProjects(projectList.getAll())
 }
 
 export function deleteTodo(todo) {
 	selectedProject.todoList.remove(todo.id)
 	displayTodo()
+	saveProjects(projectList.getAll())
 }
-
-// EXAMPLE ITEMS
-const testProject = createProject("Test Project")
-projectList.add(testProject)
-displayProject()
-
-const testTodo = createTodo("This is a Test Todo", "with a good description", null, "high")
-testProject.todoList.add(testTodo)
