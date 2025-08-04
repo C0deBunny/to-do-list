@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Template</title>
+	<script defer src="main.js"></script></head>
+	<body>
+		<svg id="theme-selector" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+			<title>brightness-4</title>
+			<path
+				d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z"
+			/>
+		</svg>
+
+		<aside>
+			<header>
+				<h1>Usagi's 🐇 Todo App</h1>
+			</header>
+
+			<div>
+				<div class="projects-header">
+					<h1>Projects</h1>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="new-project">
+						<title>plus-circle-outline</title>
+						<path
+							d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M13,7H11V11H7V13H11V17H13V13H17V11H13V7Z"
+						/>
+					</svg>
+				</div>
+				<hr />
+				<nav>
+					<ul id="project-list"></ul>
+				</nav>
+			</div>
+		</aside>
+
+		<main>
+			<div id="todo-container"></div>
+		</main>
+
+		<footer>Copyright© by C0deBunny</footer>
+
+		<div id="project-modal" class="modal hidden">
+			<div class="modal-content">
+				<span id="project-modal-close" class="close-modal">&times;</span>
+				<h2>New Project</h2>
+				<input type="text" id="project-name-input" placeholder="Project name" />
+				<button id="create-project-btn">Create</button>
+			</div>
+		</div>
+
+		<div id="project-edit-modal" class="modal hidden">
+			<div class="modal-content">
+				<span id="project-edit-modal-close" class="close-modal">&times;</span>
+				<h2>Project name:</h2>
+				<input type="text" id="project-edit-name" />
+				<button id="update-project-btn">Update</button>
+			</div>
+		</div>
+
+		<div id="project-delete-modal" class="modal hidden">
+			<div class="modal-content">
+				<span id="project-delete-modal-close" class="close-modal">&times;</span>
+				<h3 id="project-delete-name">Delete "Random Project Name Here" ?</h3>
+				<div class="button-split">
+					<button id="delete-project-yes">Yes</button>
+					<button id="delete-project-no">No</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="todo-modal" class="modal hidden">
+			<form class="modal-content" id="todo-form">
+				<span id="todo-modal-close" class="close-modal">&times;</span>
+				<h2>New Todo</h2>
+				<label for="title">Title: </label>
+				<input type="text" id="title-todo" name="title" placeholder="My new todo" minlength="3" maxlength="30" required />
+				<label for="description">Description: </label>
+				<textarea name="description" rows="5" id="description-todo" placeholder="Add additional information about your task." maxlength="500"></textarea>
+				<label for="date">Due Date:</label>
+				<input type="date" name="date" id="date-todo" />
+				<label for="priority">Priority: </label>
+				<select name="priority" id="priority-todo">
+					<option value="low" selected>Low</option>
+					<option value="medium">Medium</option>
+					<option value="high">High</option>
+				</select>
+				<button type="submit" id="create-todo-btn">Create</button>
+			</form>
+		</div>
+
+		<div id="todo-delete-modal" class="modal hidden">
+			<div class="modal-content">
+				<span id="todo-delete-modal-close" class="close-modal">&times;</span>
+				<h3 id="todo-delete-name">Delete "Random Project Name Here" ?</h3>
+				<div class="button-split">
+					<button id="delete-todo-yes">Yes</button>
+					<button id="delete-todo-no">No</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
