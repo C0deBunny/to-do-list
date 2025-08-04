@@ -55,13 +55,6 @@ export function displayTodo() {
 		const icons = document.createElement("div")
 		icons.classList = "todo-icon-container"
 
-		const editBtn = document.createElement("span")
-		editBtn.textContent = "✎"
-		editBtn.classList = "edit-icon"
-		editBtn.addEventListener("click", (event) => {
-			event.stopPropagation()
-		})
-
 		const deleteBtn = document.createElement("span")
 		deleteBtn.textContent = "×"
 		deleteBtn.classList = "delete-icon"
@@ -85,7 +78,6 @@ export function displayTodo() {
 				todoContent.classList.add("priority-high")
 		}
 
-		icons.appendChild(editBtn)
 		icons.appendChild(deleteBtn)
 		header.appendChild(dueDate)
 		header.appendChild(title)

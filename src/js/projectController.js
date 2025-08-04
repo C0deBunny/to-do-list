@@ -11,18 +11,7 @@ import { loadProjects, saveProjects } from "./storage"
 export const projectList = createProjectList()
 export let selectedProject = null
 
-const loaded = loadProjects()
-
-if (loaded.length === 0) {
-	const defaultProject = createProject("My new project")
-	projectList.add(defaultProject)
-	selectedProject = defaultProject
-	saveProjects(projectList.getAll())
-} else {
-	loaded.forEach((project) => projectList.add(project))
-	selectedProject = projectList.getAll()[0]
-}
-
+loadSavedProjects()
 displayProject()
 displayTodo()
 initTodoModals()
@@ -73,7 +62,7 @@ export function highlightSelectedProject() {
 }
 
 // To-Do
-export function createNewTodo(title, description, date, priority, modal) {
+export function createNewTodo(title, description, date, priority) {
 	const titleTodo = title.value.trim()
 
 	let descriptionTodo = description.value.trim()
@@ -100,5 +89,40 @@ export function createNewTodo(title, description, date, priority, modal) {
 export function deleteTodo(todo) {
 	selectedProject.todoList.remove(todo.id)
 	displayTodo()
+	saveProjects(projectList.getAll())
+}
+
+function loadSavedProjects() {
+	const loaded = loadProjects()
+
+	if (loaded.length === 0) {
+		createDefaultProjects()
+	} else {
+		loaded.forEach((project) => projectList.add(project))
+		selectedProject = projectList.getAll()[0]
+	}
+}
+
+function createDefaultProjects() {
+	const today = new Date()
+	const yesterday = new Date()
+	yesterday.setDate(today.getDate() - 1)
+	const tomorrow = new Date()
+	tomorrow.setDate(today.getDate() + 1)
+
+	const defaultProject = createProject("Due dates")
+	projectList.add(defaultProject)
+	defaultProject.todoList.add(createTodo("Yesterday", "This todo needed to be completed yesterday", yesterday, "low"))
+	defaultProject.todoList.add(createTodo("Today", "This todo needs to be completed today", today, "low"))
+	defaultProject.todoList.add(createTodo("Yesterday", "This todo needs to be completed before tomorrow", tomorrow, "low"))
+	defaultProject.todoList.add(createTodo("No Date", "This todo has no due date", null, "low"))
+
+	const defaultProject2 = createProject("Priorities")
+	projectList.add(defaultProject2)
+	defaultProject2.todoList.add(createTodo("Low priority", "This todo has a low priority", null, "low"))
+	defaultProject2.todoList.add(createTodo("Medium priority", "This todo has a medium priority", null, "medium"))
+	defaultProject2.todoList.add(createTodo("High priority", "This todo has a high priority", null, "high"))
+
+	selectedProject = defaultProject
 	saveProjects(projectList.getAll())
 }
