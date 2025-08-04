@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const path = require("path")
+const isProd = process.env.NODE_ENV === "production"
 
 module.exports = {
 	mode: "development",
@@ -7,12 +8,16 @@ module.exports = {
 	output: {
 		filename: "main.js",
 		path: path.resolve(__dirname, "dist"),
-		publicPath: "/to-do-list/",
+		publicPath: isProd ? "/to-do-list/" : "/",
 		clean: true,
 	},
 
 	devtool: "eval-source-map",
 	devServer: {
+		static: {
+			directory: path.join(__dirname, "public"),
+		},
+		port: 8081,
 		watchFiles: ["./src/template.html"],
 	},
 
