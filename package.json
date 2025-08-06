@@ -10,7 +10,7 @@
   },
   "homepage": "https://c0debunny.github.io/to-do-list",
   "scripts": {
-    "build": "webpack",
+    "build": "set NODE_ENV=production&& webpack",
     "dev": "webpack serve",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
